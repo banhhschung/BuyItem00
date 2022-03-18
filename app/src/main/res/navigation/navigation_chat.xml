@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/navigation_chat"
+    app:startDestination="@id/listSupporterFragment">
+
+
+    <fragment
+        android:id="@+id/listSupporterFragment"
+        android:name="com.example.buyitem00.fragment.chat.ListSupporterFragment"
+        android:label="ListSupporterFragment">
+        <action
+            android:id="@+id/action_listSupporterFragment_to_chatFragment"
+            app:destination="@id/chatFragment" />
+        <action
+            android:id="@+id/action_listSupporterFragment_to_mainActivity"
+            app:destination="@id/mainActivity" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/chatFragment"
+        android:name="com.example.buyitem00.fragment.chat.ChatFragment"
+        android:label="ChatFragment">
+        <argument
+            android:name="idUser"
+            app:argType="string" />
+        <argument
+            android:name="idSupporter"
+            app:argType="string" />
+        <argument
+            android:name="nameSupporter"
+            app:argType="string"/>
+        <action
+            android:id="@+id/action_chatFragment_to_listSupporterFragment"
+            app:destination="@id/listSupporterFragment" />
+        <argument
+            android:name="token"
+            app:argType="string" />
+    </fragment>
+    <activity
+        android:id="@+id/mainActivity"
+        android:name="com.example.buyitem00.MainActivity"
+        android:label="MainActivity" />
+</navigation>

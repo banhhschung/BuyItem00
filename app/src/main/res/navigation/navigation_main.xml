@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_main"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.buyitem00.fragment.HomeFragment"
+        android:label="HomeFragment">
+        <action
+            android:id="@+id/action_homeFragment_to_chatActivity"
+            app:destination="@id/chatActivity" />
+    </fragment>
+    <fragment
+        android:id="@+id/searchFragment"
+        android:name="com.example.buyitem00.fragment.SearchFragment"
+        android:label="SearchFragment" >
+        <action
+            android:id="@+id/action_searchFragment_to_focusSearchFragment"
+            app:destination="@id/focusSearchFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/notificationFragment"
+        android:name="com.example.buyitem00.fragment.CardFragment"
+        android:label="NotificationFragment" />
+    <fragment
+        android:id="@+id/userFragment"
+        android:name="com.example.buyitem00.fragment.UserFragment"
+        android:label="UserFragment" >
+        <action
+            android:id="@+id/action_userFragment_to_cartActivity"
+            app:destination="@id/cartActivity" />
+        <action
+            android:id="@+id/action_userFragment_to_orderUserFragment"
+            app:destination="@id/orderUserFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/focusSearchFragment"
+        android:name="com.example.buyitem00.fragment.search.FocusSearchFragment"
+        android:label="FocusSearchFragment" />
+    <activity
+        android:id="@+id/cartActivity"
+        android:name="com.example.buyitem00.ui.CartActivity"
+        android:label="activity_cart"
+        tools:layout="@layout/activity_cart" >
+        <argument android:name="uid"
+            app:argType="string" />
+    </activity>
+    <activity
+        android:id="@+id/chatActivity"
+        android:name="com.example.buyitem00.ui.ChatActivity"
+        android:label="activity_chat"
+        tools:layout="@layout/activity_chat" />
+    <fragment
+        android:id="@+id/orderUserFragment"
+        android:name="com.example.buyitem00.fragment.user.OrderUserFragment"
+        android:label="OrderUserFragment" >
+        <argument
+            android:name="uid"
+            app:argType="string" />
+    </fragment>
+</navigation>
