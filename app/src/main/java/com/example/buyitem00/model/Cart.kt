@@ -9,5 +9,6 @@ data class Cart(
     @PrimaryKey(autoGenerate = true)
     val id: Int = 0,
     val uiUser: String,
+    val count: Int,
     val idProduct: String,
 )

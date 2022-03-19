@@ -3,7 +3,7 @@ package com.example.buyitem00.parser
 import java.math.BigInteger
 
 class ConvertPrice {
-    fun convert(price: String, total: String): String {
+    fun convert(price: String, total: String, count: Int): String {
         var a = price.split("₫").get(0)
         val b = total.split("₫").get(0)
 
@@ -20,7 +20,7 @@ class ConvertPrice {
                 d += b[i].toString()
             }
         }
-        val e = "${BigInteger(c).add(BigInteger(d))}"
+        val e = "${BigInteger(c).multiply(BigInteger.valueOf(count.toLong())).add(BigInteger(d))}"
         var h = ""
         var temp = 0
         for (i in e.length - 1 downTo 0) {

@@ -157,7 +157,7 @@ class HomeFragment : Fragment(), OnclickItemListener {
     private fun openAlertDialog() {
         val builder = AlertDialog.Builder(this.requireContext())
         builder.setTitle("Waring")
-        builder.setMessage("To use this function you need to have account")
+        builder.setMessage("Trước tiên bạn cần phải có một tài khoản")
             .setPositiveButton("Yes", DialogInterface.OnClickListener { dialogInterface, i ->
                 val intent = Intent(this.requireContext(), UserActivity::class.java)
                 startActivity(intent)
@@ -165,7 +165,7 @@ class HomeFragment : Fragment(), OnclickItemListener {
             .setNegativeButton("No", DialogInterface.OnClickListener { dialogInterface, i ->
                 Toast.makeText(
                     this.requireContext(),
-                    "Không đồng ý thì chết m* mày đi",
+                    "=(((",
                     Toast.LENGTH_LONG
                 )
                     .show()

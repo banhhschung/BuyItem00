@@ -15,6 +15,8 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import com.bumptech.glide.Glide
+import com.example.buyitem00.R
 import com.example.buyitem00.data.UserViewModel
 import com.example.buyitem00.data.cart.CartViewModel
 import com.example.buyitem00.data.image.ImageViewModel
@@ -57,7 +59,8 @@ class UserFragment : Fragment() {
         }
 
         binding.yourAccount.setOnClickListener {
-
+            val action = UserFragmentDirections.actionUserFragmentToAccountFragment()
+            findNavController().navigate(action)
         }
 
         binding.yourCart.setOnClickListener {
@@ -99,6 +102,9 @@ class UserFragment : Fragment() {
                 imageViewModel.deleteImage(user.uid)
                 cartViewModel.deleteFromCart(user.uid)
                 Firebase.messaging.deleteToken()
+                Glide.with(this.requireContext()).load(R.drawable.blank_profile)
+                    .into(binding.imgAvatar)
+                binding.tvName.text = null
             })
             .setNegativeButton("No", DialogInterface.OnClickListener { dialogInterface, i ->
                 Toast.makeText(

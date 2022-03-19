@@ -1,7 +1,6 @@
 package com.example.buyitem00.fragment.user
 
 import android.content.Context
-import android.content.Intent
 import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.util.Log
@@ -20,13 +19,11 @@ import com.example.buyitem00.data.image.ImageViewModel
 import com.example.buyitem00.databinding.FragmentLoginBinding
 import com.example.buyitem00.model.Image
 import com.example.buyitem00.model.User
-import com.example.buyitem00.ui.ChatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
-import com.google.firebase.messaging.Constants
 import com.google.firebase.messaging.FirebaseMessaging
 import com.google.firebase.storage.FirebaseStorage
 import kotlinx.coroutines.Dispatchers
@@ -102,7 +99,7 @@ class LoginFragment : Fragment() {
 
         FirebaseDatabase.getInstance().reference.child("User")
             .orderByChild("uid").startAt(uid).endAt(uid + "\uf8ff")
-            .addValueEventListener(object : ValueEventListener {
+            .addListenerForSingleValueEvent(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
                     var user = User()
                     for (i in snapshot.children) {
@@ -130,18 +127,23 @@ class LoginFragment : Fragment() {
     }
 
     private fun getImage(user: User) {
-        FirebaseDatabase.getInstance().reference.child("User").child(user.uid).setValue(user)
 
         val dbRef = FirebaseStorage.getInstance().reference.child("images/${user.avatar}")
         val localFile = File.createTempFile("tempImage", "jpg")
         dbRef.getFile(localFile).addOnSuccessListener {
             val bitmap = BitmapFactory.decodeFile(localFile.absolutePath)
             imageViewModel.addToData(Image(user.uid, bitmap))
-            Toast.makeText(requireContext(), "successful", Toast.LENGTH_LONG).show()
-            val intent = Intent(context, ChatActivity::class.java)
-            startActivity(intent)
-        }
 
+            lifecycleScope.launch(Dispatchers.IO) {
+                FirebaseDatabase.getInstance().reference.child("User").child(user.uid)
+                    .setValue(user)
+                withContext(Dispatchers.Main) {
+                    val action = LoginFragmentDirections.actionLoginFragmentToMainActivity()
+                    findNavController().navigate(action)
+                }
+            }
+
+        }
 
     }
 }

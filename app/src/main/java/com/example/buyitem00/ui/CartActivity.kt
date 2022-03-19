@@ -11,14 +11,12 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.buyitem00.OnclickItemListener
 import com.example.buyitem00.adapter.ListProductAdapter
 import com.example.buyitem00.cloudmessagingservice.RetrofitInstance
-import com.example.buyitem00.data.UserViewModel
 import com.example.buyitem00.data.cart.CartViewModel
 import com.example.buyitem00.data.supporter.SupporterViewModel
 import com.example.buyitem00.databinding.ActivityCartBinding
 import com.example.buyitem00.model.Order
 import com.example.buyitem00.model.Product
 import com.example.buyitem00.model.Supporter
-import com.example.buyitem00.model.User
 import com.example.buyitem00.model.notification.NotificationData
 import com.example.buyitem00.model.notification.PushNotification
 import com.example.buyitem00.parser.AutoCreateId
@@ -31,7 +29,6 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import java.lang.Exception
-import java.util.ArrayList
 
 class CartActivity : AppCompatActivity(), OnclickItemListener {
 
@@ -64,7 +61,7 @@ class CartActivity : AppCompatActivity(), OnclickItemListener {
             val arrCart = cartViewModel.findCardByUserId(uid)
             withContext(Dispatchers.Main) {
                 for (i in arrCart.indices) {
-                    search(arrCart[i].idProduct)
+                    search(arrCart[i].idProduct, arrCart[i].count)
                 }
             }
         }
@@ -90,7 +87,7 @@ class CartActivity : AppCompatActivity(), OnclickItemListener {
 
     }
 
-    private fun search(id: String) {
+    private fun search(id: String, count: Int) {
         val queryProduct =
             FirebaseDatabase.getInstance().reference.child("Product").orderByChild("id")
                 .startAt(id).endAt(id + "\uf8ff")
@@ -99,7 +96,7 @@ class CartActivity : AppCompatActivity(), OnclickItemListener {
                 for (data in snapshot.children) {
                     val tempProduct = data.getValue(Product::class.java)!!
                     arrProduct.add(tempProduct)
-                    total = ConvertPrice().convert(tempProduct.price, total)
+                    total = ConvertPrice().convert(tempProduct.price, total, count)
                 }
                 adapter.reloadData(arrProduct)
                 binding.tvPrice.text = total

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation_user_login"
     app:startDestination="@id/loginFragment">
 
@@ -12,16 +13,20 @@
             android:id="@+id/action_loginFragment_to_registerFragment"
             app:destination="@id/registerFragment" />
         <action
-            android:id="@+id/action_loginFragment_to_navigation_chat"
-            app:destination="@id/navigation_chat" />
+            android:id="@+id/action_loginFragment_to_mainActivity"
+            app:destination="@id/mainActivity2" />
     </fragment>
     <fragment
         android:id="@+id/registerFragment"
         android:name="com.example.buyitem00.fragment.user.RegisterFragment"
         android:label="RegisterFragment" >
         <action
-            android:id="@+id/action_registerFragment_to_navigation_chat"
-            app:destination="@id/navigation_chat" />
+            android:id="@+id/action_registerFragment_to_mainActivity"
+            app:destination="@id/mainActivity" />
     </fragment>
-    <include app:graph="@navigation/navigation_chat" />
+    <activity
+        android:id="@+id/mainActivity2"
+        android:name="com.example.buyitem00.MainActivity"
+        android:label="activity_main"
+        tools:layout="@layout/activity_main" />
 </navigation>

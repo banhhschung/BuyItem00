@@ -98,7 +98,7 @@ class RegisterFragment : Fragment() {
                 lifecycleScope.launch(Dispatchers.IO){
                     imageViewMode.addToData(Image(auth.currentUser!!.uid, bitmap))
                     withContext(Dispatchers.Main){
-                        val action = RegisterFragmentDirections.actionRegisterFragmentToNavigationChat()
+                        val action = RegisterFragmentDirections.actionRegisterFragmentToMainActivity()
                         findNavController().navigate(action)
                     }
                 }

@@ -60,7 +60,7 @@ class CardFragment : Fragment(), OnclickItemListener {
                     val arrCart = cartViewModel.findCardByUserId(user.uid)
                     withContext(Dispatchers.Main) {
                         for (i in arrCart.indices) {
-                            search(arrCart[i].idProduct)
+                            search(arrCart[i].idProduct, arrCart[i].count)
                         }
                     }
                 }
@@ -99,7 +99,7 @@ class CardFragment : Fragment(), OnclickItemListener {
         return binding.root
     }
 
-    private fun search(idProduct: String) {
+    private fun search(idProduct: String, count: Int) {
         val queryProduct =
             FirebaseDatabase.getInstance().reference.child("Product").orderByChild("id")
                 .startAt(idProduct).endAt(idProduct + "\uf8ff")
@@ -108,7 +108,7 @@ class CardFragment : Fragment(), OnclickItemListener {
                 for (data in snapshot.children) {
                     val tempProduct = data.getValue(Product::class.java)!!
                     arrProduct.add(tempProduct)
-                    total = ConvertPrice().convert(tempProduct.price, total)
+                    total = ConvertPrice().convert(tempProduct.price, total, count)
                 }
                 adapter.reloadData(arrProduct)
                 binding.tvPrice.text = total

@@ -35,6 +35,9 @@
         <action
             android:id="@+id/action_userFragment_to_orderUserFragment"
             app:destination="@id/orderUserFragment" />
+        <action
+            android:id="@+id/action_userFragment_to_accountFragment"
+            app:destination="@id/accountFragment" />
     </fragment>
     <fragment
         android:id="@+id/focusSearchFragment"
@@ -61,4 +64,8 @@
             android:name="uid"
             app:argType="string" />
     </fragment>
+    <fragment
+        android:id="@+id/accountFragment"
+        android:name="com.example.buyitem00.fragment.user.AccountFragment"
+        android:label="AccountFragment" />
 </navigation>

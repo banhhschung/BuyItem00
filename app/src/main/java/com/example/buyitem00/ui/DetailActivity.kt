@@ -31,6 +31,7 @@ class DetailActivity : AppCompatActivity() {
     private val cartViewModel: CartViewModel by viewModels()
     private val userViewModel: UserViewModel by viewModels()
     private lateinit var user: User
+    private var cout = 1
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityDetailBinding.inflate(layoutInflater)
@@ -47,6 +48,22 @@ class DetailActivity : AppCompatActivity() {
             Log.d("doanpt", it.size.toString())
         }
 
+        binding.tvCount.text = "${cout}x"
+
+
+        binding.tvMinus.setOnClickListener {
+            if (cout <= 1) {
+
+            } else {
+                cout--
+                binding.tvCount.text = "${cout}x"
+            }
+        }
+
+        binding.tvPlus.setOnClickListener {
+            cout++
+            binding.tvCount.text = "${cout}x"
+        }
 
 
 
@@ -58,7 +75,7 @@ class DetailActivity : AppCompatActivity() {
             withContext(Dispatchers.Main) {
                 binding.constraint.visibility = View.VISIBLE
                 binding.tvName.text = product.name
-                binding.tvPrice.text = product.price
+                binding.tvAdd.text = "Order for ${product.price}"
                 binding.tvInformation.text = data
                 val animation = AnimationUtils.loadAnimation(this@DetailActivity, R.anim.translate)
                 animation.duration = 200
@@ -68,7 +85,13 @@ class DetailActivity : AppCompatActivity() {
 
         binding.btnAddToCart.setOnClickListener {
             if (user.uid != "") {
-                cartViewModel.addToCart(Cart(uiUser = user.uid, idProduct = product.id))
+                cartViewModel.addToCart(
+                    Cart(
+                        uiUser = user.uid,
+                        idProduct = product.id,
+                        count = cout
+                    )
+                )
                 Toast.makeText(this, "Success adding", Toast.LENGTH_LONG).show()
             } else {
                 Toast.makeText(this, "Mày cần phải tạo tài khoản trước", Toast.LENGTH_LONG).show()
