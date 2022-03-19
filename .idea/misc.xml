@@ -54,7 +54,8 @@
         <entry key="..\:/DoAnAndroid/BuyItem00/app/src/main/res/layout/product_1_layout.xml" value="0.2046875" />
         <entry key="..\:/DoAnAndroid/BuyItem00/app/src/main/res/layout/product_2_layout.xml" value="0.2" />
         <entry key="..\:/DoAnAndroid/BuyItem00/app/src/main/res/layout/product_3_layout.xml" value="0.2" />
-        <entry key="..\:/DoAnAndroid/BuyItem00/app/src/main/res/layout/recycleview_product.xml" value="0.33" />
+        <entry key="..\:/DoAnAndroid/BuyItem00/app/src/main/res/layout/recycleview_product.xml" value="0.2" />
+        <entry key="..\:/DoAnAndroid/BuyItem00/app/src/main/res/layout/recycleview_product_for_cart.xml" value="0.209375" />
         <entry key="..\:/DoAnAndroid/BuyItem00/app/src/main/res/menu/menu_main.xml" value="0.2" />
         <entry key="..\:/DoAnAndroid/BuyItem00/app/src/main/res/menu/nav_menu.xml" value="0.2046875" />
       </map>

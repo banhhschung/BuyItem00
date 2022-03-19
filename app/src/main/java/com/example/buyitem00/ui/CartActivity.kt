@@ -7,13 +7,14 @@ import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.navArgs
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.GridLayoutManager
 import com.example.buyitem00.OnclickItemListener
-import com.example.buyitem00.adapter.ListProductAdapter
+import com.example.buyitem00.adapter.ListCartAdapter
 import com.example.buyitem00.cloudmessagingservice.RetrofitInstance
 import com.example.buyitem00.data.cart.CartViewModel
 import com.example.buyitem00.data.supporter.SupporterViewModel
 import com.example.buyitem00.databinding.ActivityCartBinding
+import com.example.buyitem00.model.Cart
 import com.example.buyitem00.model.Order
 import com.example.buyitem00.model.Product
 import com.example.buyitem00.model.Supporter
@@ -35,7 +36,8 @@ class CartActivity : AppCompatActivity(), OnclickItemListener {
     private lateinit var binding: ActivityCartBinding
     private val cartViewModel: CartViewModel by viewModels()
     private var arrProduct = arrayListOf<Product>()
-    private val adapter = ListProductAdapter(this)
+    private var arrCount = arrayListOf<Int>()
+    private val adapter = ListCartAdapter(this)
     private val supporterViewModel: SupporterViewModel by viewModels()
     private var total = "00.000₫"
     private var supporter = Supporter()
@@ -54,14 +56,14 @@ class CartActivity : AppCompatActivity(), OnclickItemListener {
         }
 
 
-        binding.rvCart.layoutManager = LinearLayoutManager(this)
+        binding.rvCart.layoutManager = GridLayoutManager(this, 1, GridLayoutManager.VERTICAL, false)
         binding.rvCart.adapter = adapter
 
         lifecycleScope.launch(Dispatchers.IO) {
             val arrCart = cartViewModel.findCardByUserId(uid)
             withContext(Dispatchers.Main) {
                 for (i in arrCart.indices) {
-                    search(arrCart[i].idProduct, arrCart[i].count)
+                    search(arrCart[i])
                 }
             }
         }
@@ -87,18 +89,19 @@ class CartActivity : AppCompatActivity(), OnclickItemListener {
 
     }
 
-    private fun search(id: String, count: Int) {
+    private fun search(cart: Cart) {
         val queryProduct =
             FirebaseDatabase.getInstance().reference.child("Product").orderByChild("id")
-                .startAt(id).endAt(id + "\uf8ff")
+                .startAt(cart.idProduct).endAt(cart.idProduct + "\uf8ff")
         queryProduct.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 for (data in snapshot.children) {
                     val tempProduct = data.getValue(Product::class.java)!!
+                    arrCount.add(cart.count)
                     arrProduct.add(tempProduct)
-                    total = ConvertPrice().convert(tempProduct.price, total, count)
+                    total = ConvertPrice().convert(tempProduct.price, total, cart.count)
                 }
-                adapter.reloadData(arrProduct)
+                adapter.reloadData(arrProduct, arrCount)
                 binding.tvPrice.text = total
             }
 

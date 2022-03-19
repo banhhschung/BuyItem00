@@ -128,21 +128,20 @@ class LoginFragment : Fragment() {
 
     private fun getImage(user: User) {
 
+        FirebaseDatabase.getInstance().reference.child("User").child(user.uid)
+            .setValue(user).addOnCompleteListener {
+                Log.d("khanh", "store xong")
+//
+            }
         val dbRef = FirebaseStorage.getInstance().reference.child("images/${user.avatar}")
         val localFile = File.createTempFile("tempImage", "jpg")
         dbRef.getFile(localFile).addOnSuccessListener {
             val bitmap = BitmapFactory.decodeFile(localFile.absolutePath)
             imageViewModel.addToData(Image(user.uid, bitmap))
-
-            lifecycleScope.launch(Dispatchers.IO) {
-                FirebaseDatabase.getInstance().reference.child("User").child(user.uid)
-                    .setValue(user)
-                withContext(Dispatchers.Main) {
-                    val action = LoginFragmentDirections.actionLoginFragmentToMainActivity()
-                    findNavController().navigate(action)
-                }
-            }
-
+            Log.d("khanh", "file xong")
+            Thread.sleep(1000)
+            val action = LoginFragmentDirections.actionLoginFragmentToMainActivity()
+            findNavController().navigate(action)
         }
 
     }

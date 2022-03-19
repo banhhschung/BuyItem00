@@ -11,16 +11,13 @@ import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.buyitem00.OnclickItemListener
-import com.example.buyitem00.adapter.ListProductAdapter
+import com.example.buyitem00.adapter.ListCartAdapter
 import com.example.buyitem00.cloudmessagingservice.RetrofitInstance
 import com.example.buyitem00.data.UserViewModel
 import com.example.buyitem00.data.cart.CartViewModel
 import com.example.buyitem00.data.supporter.SupporterViewModel
 import com.example.buyitem00.databinding.FragmentCartBinding
-import com.example.buyitem00.model.Order
-import com.example.buyitem00.model.Product
-import com.example.buyitem00.model.Supporter
-import com.example.buyitem00.model.User
+import com.example.buyitem00.model.*
 import com.example.buyitem00.model.notification.NotificationData
 import com.example.buyitem00.model.notification.PushNotification
 import com.example.buyitem00.parser.AutoCreateId
@@ -36,17 +33,20 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import java.lang.Exception
+import java.math.BigInteger
 
 class CardFragment : Fragment(), OnclickItemListener {
     private lateinit var binding: FragmentCartBinding
     private val cartViewModel: CartViewModel by activityViewModels()
     private var arrProduct = arrayListOf<Product>()
-    private val adapter = ListProductAdapter(this)
+    private var arrCount = arrayListOf<Int>()
+    private val adapter = ListCartAdapter(this)
     private val supporterViewModel: SupporterViewModel by activityViewModels()
     private val userViewModel: UserViewModel by activityViewModels()
     private var total = "00.000₫"
     private var supporter = Supporter()
     private var user = User()
+    private val deliveryCost = "100.000₫"
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -60,7 +60,7 @@ class CardFragment : Fragment(), OnclickItemListener {
                     val arrCart = cartViewModel.findCardByUserId(user.uid)
                     withContext(Dispatchers.Main) {
                         for (i in arrCart.indices) {
-                            search(arrCart[i].idProduct, arrCart[i].count)
+                            search(arrCart[i])
                         }
                     }
                 }
@@ -99,19 +99,22 @@ class CardFragment : Fragment(), OnclickItemListener {
         return binding.root
     }
 
-    private fun search(idProduct: String, count: Int) {
+    private fun search(cart: Cart) {
         val queryProduct =
             FirebaseDatabase.getInstance().reference.child("Product").orderByChild("id")
-                .startAt(idProduct).endAt(idProduct + "\uf8ff")
+                .startAt(cart.idProduct).endAt(cart.idProduct + "\uf8ff")
         queryProduct.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 for (data in snapshot.children) {
                     val tempProduct = data.getValue(Product::class.java)!!
+                    arrCount.add(cart.count)
                     arrProduct.add(tempProduct)
-                    total = ConvertPrice().convert(tempProduct.price, total, count)
+                    total = ConvertPrice().convert(tempProduct.price, total, cart.count)
                 }
-                adapter.reloadData(arrProduct)
+                adapter.reloadData(arrProduct, arrCount)
                 binding.tvPrice.text = total
+                binding.tvDelivery.text = deliveryCost
+                binding.tvTotal.text = ConvertPrice().convert(deliveryCost, total, 1)
             }
 
             override fun onCancelled(error: DatabaseError) {
