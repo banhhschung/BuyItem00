@@ -71,7 +71,7 @@ class LoginFragment : Fragment() {
             if (email == "" || password == "") {
                 Toast.makeText(
                     this.requireContext(),
-                    "please enter your email and password",
+                    "Hãy điền đầy đủ thông tin cần thiết",
                     Toast.LENGTH_LONG
                 ).show()
             } else {
@@ -111,7 +111,9 @@ class LoginFragment : Fragment() {
                         user.password,
                         user.uid,
                         user.avatar,
-                        token
+                        token,
+                        user.phoneNumber,
+                        user.location
                     )
                     userViewModel.addUser(temp)
                     getImage(temp)

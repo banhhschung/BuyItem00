@@ -1,5 +1,6 @@
 package com.example.buyitem00.ui
 
+import android.graphics.drawable.Drawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.transition.Slide
@@ -13,6 +14,14 @@ import androidx.activity.viewModels
 import androidx.constraintlayout.widget.ConstraintSet
 import androidx.lifecycle.lifecycleScope
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.DataSource
+import com.bumptech.glide.load.engine.GlideException
+import com.bumptech.glide.load.resource.bitmap.CenterCrop
+import com.bumptech.glide.load.resource.bitmap.CenterInside
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners
+import com.bumptech.glide.request.RequestListener
+import com.bumptech.glide.request.RequestOptions
+import com.bumptech.glide.request.target.Target
 import com.example.buyitem00.R
 import com.example.buyitem00.data.UserViewModel
 import com.example.buyitem00.data.cart.CartViewModel
@@ -23,6 +32,7 @@ import com.example.buyitem00.model.User
 import com.example.buyitem00.parser.AutoCreateId
 import com.example.buyitem00.parser.DataMining
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.invoke
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
@@ -41,7 +51,7 @@ class DetailActivity : AppCompatActivity() {
             if (it.isEmpty()) {
 
             } else {
-                user = it.get(0)
+                user = it[0]
             }
         }
         cartViewModel.readAllData.observe(this) {
@@ -69,7 +79,9 @@ class DetailActivity : AppCompatActivity() {
 
         binding.constraint.visibility = View.INVISIBLE
         val product = intent.getSerializableExtra("product") as Product
-        Glide.with(binding.imProduct).load(product.image).into(binding.imProduct)
+        Glide.with(binding.imProduct).load(product.image)
+            .transform(CenterInside(), RoundedCorners(60))
+            .into(binding.imProduct)
         lifecycleScope.launch(Dispatchers.IO) {
             val data = DataMining.getDataItem(product.link)
             withContext(Dispatchers.Main) {

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#5ACAB4"
+    android:background="@drawable/background_welcome"
     tools:context=".WelcomeActivity">
 
     <ProgressBar
@@ -18,26 +18,15 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/tv_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:gravity="center"
-        android:text="phần mềm có sử dụng thông tin sản phẩm từ https://www.thegioididong.com"
-        android:textColor="#000000"
-        android:textSize="23sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/progress"/>
-
-    <TextView
         android:id="@+id/tb_start"
-        android:layout_width="300dp"
-        android:layout_height="50dp"
-        android:layout_marginBottom="100dp"
+        android:layout_width="200dp"
+        android:layout_height="45dp"
+        android:layout_marginBottom="60dp"
         android:background="@drawable/background_start_button"
         android:gravity="center"
         android:text="Start"
+        android:textColor="#f47b26"
+        android:textStyle="bold"
         android:textSize="23sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

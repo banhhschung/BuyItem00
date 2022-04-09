@@ -66,6 +66,7 @@ class HomeFragment : Fragment(), OnclickItemListener {
                     image = imageViewModel.getObjectData(user.uid)
                     withContext(Dispatchers.Main) {
                         binding.imageAvatar.setImageBitmap(image.bitmap)
+                        binding.tvName.text = "Xin chào, ${user.name}"
                     }
                 }
             }
@@ -104,7 +105,8 @@ class HomeFragment : Fragment(), OnclickItemListener {
 
 
         val tabletAdapter = Product2Adapter(this)
-        binding.rvTablet.layoutManager = GridLayoutManager(requireContext(), 1, GridLayoutManager.HORIZONTAL, false)
+        binding.rvTablet.layoutManager =
+            GridLayoutManager(requireContext(), 1, GridLayoutManager.HORIZONTAL, false)
         binding.rvTablet.adapter = tabletAdapter
         productViewModel.arrTablet.observe(this.requireActivity()) {
             tabletAdapter.reloadData(it)

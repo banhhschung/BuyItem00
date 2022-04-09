@@ -4,17 +4,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp">
+
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/img_avatar"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_marginBottom="50dp"
-            android:src="@drawable/ic_person"
+            android:src="@drawable/blank_profile"
             app:layout_constraintBottom_toTopOf="@id/edt_name"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
@@ -35,28 +37,69 @@
             android:layout_width="match_parent"
             android:layout_height="70dp"
             android:layout_gravity="center"
+            android:layout_marginTop="400dp"
             android:layout_marginBottom="20dp"
             android:background="@drawable/backgroud_edittext"
             android:hint="Name"
             android:paddingStart="30dp"
             android:paddingEnd="30dp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@id/edt_email"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
             android:id="@+id/edt_email"
             android:layout_width="match_parent"
             android:layout_height="70dp"
             android:layout_gravity="center"
-            android:layout_marginTop="500dp"
+            android:layout_marginTop="20dp"
             android:background="@drawable/backgroud_edittext"
             android:hint="Email"
             android:paddingStart="30dp"
             android:paddingEnd="30dp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@id/edt_name" />
+
+        <EditText
+            android:id="@+id/edt_phoneNumber"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/backgroud_edittext"
+            android:hint="Phone number"
+            android:paddingStart="30dp"
+            android:paddingEnd="30dp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/edt_email" />
+
+        <LinearLayout
+            android:id="@+id/layout"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/backgroud_edittext"
+            android:orientation="horizontal"
+            android:paddingStart="10dp"
+            android:paddingEnd="30dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/edt_phoneNumber">
+
+            <ImageView
+                android:id="@+id/btn_location"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center|left"
+                android:src="@drawable/ic_location" />
+
+            <EditText
+                android:id="@+id/edt_location"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="Your location"
+                android:textStyle="bold" />
+        </LinearLayout>
 
         <EditText
             android:id="@+id/edt_password"
@@ -67,9 +110,10 @@
             android:hint="Password"
             android:paddingStart="30dp"
             android:paddingEnd="30dp"
+            android:password="true"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/edt_email" />
+            app:layout_constraintTop_toBottomOf="@id/layout" />
 
         <EditText
             android:id="@+id/edt_repeat_password"
@@ -80,6 +124,7 @@
             android:hint="Repeat password"
             android:paddingStart="30dp"
             android:paddingEnd="30dp"
+            android:password="true"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/edt_password" />

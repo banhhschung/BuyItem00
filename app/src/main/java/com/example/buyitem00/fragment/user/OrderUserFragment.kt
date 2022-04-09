@@ -11,7 +11,6 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.example.buyitem00.adapter.OrderListAdapter
 import com.example.buyitem00.databinding.FragmentOrderUserBinding
 import com.example.buyitem00.model.Order
-import com.example.buyitem00.model.User
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -34,10 +33,9 @@ class OrderUserFragment : Fragment() {
         binding.rvOrder.layoutManager = GridLayoutManager(context, 1)
         binding.rvOrder.adapter = adapter
 
-        val string = "bWE56uDyeuP4OhJRntfBRWjuImP2"
-        FirebaseDatabase.getInstance().getReference().child("OrderUser").orderByChild("uid")
-            .startAt(string)
-            .endAt(string + "\uf8ff").addValueEventListener(object : ValueEventListener {
+        FirebaseDatabase.getInstance().reference.child("OrderUser").orderByChild("uid")
+            .startAt(uid)
+            .endAt(uid + "\uf8ff").addValueEventListener(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
                     for (i in snapshot.children) {
                         val order = i.getValue(Order::class.java)

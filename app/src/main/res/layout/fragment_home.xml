@@ -9,7 +9,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#ffffff"
+        android:background="@drawable/background_home_fragment"
         android:padding="20dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -26,6 +26,17 @@
                 android:src="@drawable/blank_profile"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:textSize="12sp"
+                android:id="@+id/tv_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:text="Xin chào! Bạn cần đăng nhập"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@id/image_avatar"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
@@ -45,10 +56,10 @@
             android:layout_height="wrap_content"
             android:text="Điện thoại nổi bật"
             android:textColor="#5E5D5D"
-            android:textSize="23sp"
+            android:textSize="18sp"
             android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/rv_phones" />
+            app:layout_constraintBottom_toTopOf="@id/rv_phones"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
             android:id="@+id/tv_phone"
@@ -56,9 +67,9 @@
             android:layout_height="wrap_content"
             android:text="See all"
             android:textColor="#4a4c5c"
-            android:textSize="23sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/rv_phones" />
+            android:textSize="18sp"
+            app:layout_constraintBottom_toTopOf="@id/rv_phones"
+            app:layout_constraintEnd_toEndOf="parent" />
 
 
         <androidx.recyclerview.widget.RecyclerView
@@ -74,10 +85,10 @@
             android:layout_height="wrap_content"
             android:text="Laptop nổi bật"
             android:textColor="#5E5D5D"
-            android:textSize="23sp"
+            android:textSize="18sp"
             android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/rv_laptops" />
+            app:layout_constraintBottom_toTopOf="@id/rv_laptops"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
             android:id="@+id/tv_laptop"
@@ -85,9 +96,9 @@
             android:layout_height="wrap_content"
             android:text="See all"
             android:textColor="#4a4c5c"
-            android:textSize="23sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/rv_laptops" />
+            android:textSize="18sp"
+            app:layout_constraintBottom_toTopOf="@id/rv_laptops"
+            app:layout_constraintEnd_toEndOf="parent" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_laptops"
@@ -102,10 +113,11 @@
             android:layout_height="wrap_content"
             android:text="Đồng hồ thông minh nổi bật"
             android:textColor="#5E5D5D"
-            android:textSize="23sp"
+            android:textSize="18sp"
             android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/rv_smartwatches" /> />
+            app:layout_constraintBottom_toTopOf="@id/rv_smartwatches"
+            app:layout_constraintStart_toStartOf="parent" />
+        />
 
         <TextView
             android:id="@+id/tv_smartwatch"
@@ -113,9 +125,9 @@
             android:layout_height="wrap_content"
             android:text="See all"
             android:textColor="#4a4c5c"
-            android:textSize="23sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/rv_smartwatches" />
+            android:textSize="18sp"
+            app:layout_constraintBottom_toTopOf="@id/rv_smartwatches"
+            app:layout_constraintEnd_toEndOf="parent" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_smartwatches"
@@ -131,7 +143,7 @@
             android:layout_marginTop="20dp"
             android:text="Máy tính bảng nổi bật"
             android:textColor="#5E5D5D"
-            android:textSize="23sp"
+            android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/rv_smartwatches" />
@@ -143,7 +155,7 @@
             android:layout_marginTop="20dp"
             android:text="See all"
             android:textColor="#4a4c5c"
-            android:textSize="23sp"
+            android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/rv_smartwatches" />
 

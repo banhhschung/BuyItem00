@@ -15,16 +15,18 @@
         <entry key="..\:/DoAnAndroid/BuyItem00/app/src/main/res/drawable/background_cap_nhat_button.xml" value="0.1295" />
         <entry key="..\:/DoAnAndroid/BuyItem00/app/src/main/res/drawable/background_for_bottom_navigation.xml" value="0.1295" />
         <entry key="..\:/DoAnAndroid/BuyItem00/app/src/main/res/drawable/background_for_list_product.xml" value="0.1885" />
+        <entry key="..\:/DoAnAndroid/BuyItem00/app/src/main/res/drawable/background_home_fragment.xml" value="0.185" />
         <entry key="..\:/DoAnAndroid/BuyItem00/app/src/main/res/drawable/background_product_1.xml" value="0.22083333333333333" />
         <entry key="..\:/DoAnAndroid/BuyItem00/app/src/main/res/drawable/background_product_3.xml" value="0.22083333333333333" />
         <entry key="..\:/DoAnAndroid/BuyItem00/app/src/main/res/drawable/background_receive.xml" value="0.169" />
         <entry key="..\:/DoAnAndroid/BuyItem00/app/src/main/res/drawable/background_send.xml" value="0.1655" />
+        <entry key="..\:/DoAnAndroid/BuyItem00/app/src/main/res/drawable/bottom_nav_color.xml" value="0.1065" />
         <entry key="..\:/DoAnAndroid/BuyItem00/app/src/main/res/drawable/encircle_line.xml" value="0.177" />
         <entry key="..\:/DoAnAndroid/BuyItem00/app/src/main/res/drawable/ic_add_svgrepo_com.xml" value="0.22083333333333333" />
         <entry key="..\:/DoAnAndroid/BuyItem00/app/src/main/res/drawable/ic_home.xml" value="0.22083333333333333" />
         <entry key="..\:/DoAnAndroid/BuyItem00/app/src/main/res/layout/activity_cart.xml" value="0.209375" />
         <entry key="..\:/DoAnAndroid/BuyItem00/app/src/main/res/layout/activity_chat.xml" value="0.2046875" />
-        <entry key="..\:/DoAnAndroid/BuyItem00/app/src/main/res/layout/activity_detail.xml" value="0.18" />
+        <entry key="..\:/DoAnAndroid/BuyItem00/app/src/main/res/layout/activity_detail.xml" value="0.25" />
         <entry key="..\:/DoAnAndroid/BuyItem00/app/src/main/res/layout/activity_list_product.xml" value="0.2046875" />
         <entry key="..\:/DoAnAndroid/BuyItem00/app/src/main/res/layout/activity_main.xml" value="0.2046875" />
         <entry key="..\:/DoAnAndroid/BuyItem00/app/src/main/res/layout/activity_setting_user.xml" value="0.209375" />
@@ -33,11 +35,13 @@
         <entry key="..\:/DoAnAndroid/BuyItem00/app/src/main/res/layout/fragment_account.xml" value="0.209375" />
         <entry key="..\:/DoAnAndroid/BuyItem00/app/src/main/res/layout/fragment_cart.xml" value="0.209375" />
         <entry key="..\:/DoAnAndroid/BuyItem00/app/src/main/res/layout/fragment_chat.xml" value="0.2046875" />
+        <entry key="..\:/DoAnAndroid/BuyItem00/app/src/main/res/layout/fragment_detail_news.xml" value="0.22552083333333334" />
         <entry key="..\:/DoAnAndroid/BuyItem00/app/src/main/res/layout/fragment_detail_product.xml" value="0.2046875" />
         <entry key="..\:/DoAnAndroid/BuyItem00/app/src/main/res/layout/fragment_focus_search.xml" value="0.209375" />
-        <entry key="..\:/DoAnAndroid/BuyItem00/app/src/main/res/layout/fragment_home.xml" value="0.2046875" />
+        <entry key="..\:/DoAnAndroid/BuyItem00/app/src/main/res/layout/fragment_home.xml" value="0.25" />
         <entry key="..\:/DoAnAndroid/BuyItem00/app/src/main/res/layout/fragment_list_supporter.xml" value="0.2046875" />
         <entry key="..\:/DoAnAndroid/BuyItem00/app/src/main/res/layout/fragment_login.xml" value="0.209375" />
+        <entry key="..\:/DoAnAndroid/BuyItem00/app/src/main/res/layout/fragment_map.xml" value="0.18425925925925926" />
         <entry key="..\:/DoAnAndroid/BuyItem00/app/src/main/res/layout/fragment_notification.xml" value="0.2046875" />
         <entry key="..\:/DoAnAndroid/BuyItem00/app/src/main/res/layout/fragment_order_user.xml" value="0.209375" />
         <entry key="..\:/DoAnAndroid/BuyItem00/app/src/main/res/layout/fragment_register.xml" value="0.22" />
@@ -47,6 +51,8 @@
         <entry key="..\:/DoAnAndroid/BuyItem00/app/src/main/res/layout/fragment_user.xml" value="0.2046875" />
         <entry key="..\:/DoAnAndroid/BuyItem00/app/src/main/res/layout/header_main.xml" value="0.209375" />
         <entry key="..\:/DoAnAndroid/BuyItem00/app/src/main/res/layout/item_cart_layout.xml" value="0.209375" />
+        <entry key="..\:/DoAnAndroid/BuyItem00/app/src/main/res/layout/item_news_layout.xml" value="0.22552083333333334" />
+        <entry key="..\:/DoAnAndroid/BuyItem00/app/src/main/res/layout/layout_dialog.xml" value="0.22552083333333334" />
         <entry key="..\:/DoAnAndroid/BuyItem00/app/src/main/res/layout/message_receive.xml" value="0.67" />
         <entry key="..\:/DoAnAndroid/BuyItem00/app/src/main/res/layout/message_recive.xml" value="0.2046875" />
         <entry key="..\:/DoAnAndroid/BuyItem00/app/src/main/res/layout/message_send.xml" value="0.2046875" />

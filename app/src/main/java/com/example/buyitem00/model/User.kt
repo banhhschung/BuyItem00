@@ -12,5 +12,7 @@ data class User(
     @PrimaryKey
     val uid: String = "",
     val avatar: String = "",
-    val token: String = ""
+    val token: String = "",
+    val phoneNumber: String = "",
+    val location: String = ""
 )

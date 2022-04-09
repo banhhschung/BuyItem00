@@ -73,9 +73,18 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="-24" />
-                            <option name="y" value="-708" />
+                            <option name="x" value="10" />
+                            <option name="y" value="-607" />
                           </Point>
+                        </option>
+                        <option name="myPositions">
+                          <map>
+                            <entry key="action_accountFragment_to_userFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                          </map>
                         </option>
                       </LayoutPositions>
                     </value>
@@ -99,6 +108,18 @@
                           <Point>
                             <option name="x" value="-902" />
                             <option name="y" value="-1430" />
+                          </Point>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
+                  <entry key="detailNewsFragment">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="-560" />
+                            <option name="y" value="-603" />
                           </Point>
                         </option>
                       </LayoutPositions>
@@ -172,6 +193,11 @@
                         </option>
                         <option name="myPositions">
                           <map>
+                            <entry key="action_searchFragment_to_detailNewsFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
                             <entry key="action_searchFragment_to_focusSearchFragment">
                               <value>
                                 <LayoutPositions />
@@ -234,7 +260,7 @@
                         </option>
                         <option name="myPositions">
                           <map>
-                            <entry key="action_loginFragment_to_mainActivity2">
+                            <entry key="action_loginFragment_to_mainActivity">
                               <value>
                                 <LayoutPositions />
                               </value>
@@ -254,8 +280,8 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="-13" />
-                            <option name="y" value="-251" />
+                            <option name="x" value="-18" />
+                            <option name="y" value="-307" />
                           </Point>
                         </option>
                       </LayoutPositions>
@@ -267,12 +293,12 @@
                         <option name="myPosition">
                           <Point>
                             <option name="x" value="109" />
-                            <option name="y" value="81" />
+                            <option name="y" value="83" />
                           </Point>
                         </option>
                         <option name="myPositions">
                           <map>
-                            <entry key="action_registerFragment_to_mainActivity2">
+                            <entry key="action_registerFragment_to_mainActivity">
                               <value>
                                 <LayoutPositions />
                               </value>

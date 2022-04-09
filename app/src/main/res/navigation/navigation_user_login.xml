@@ -20,9 +20,10 @@
         android:id="@+id/registerFragment"
         android:name="com.example.buyitem00.fragment.user.RegisterFragment"
         android:label="RegisterFragment" >
+
         <action
-            android:id="@+id/action_registerFragment_to_mainActivity"
-            app:destination="@id/mainActivity" />
+            android:id="@+id/action_registerFragment_to_mainActivity2"
+            app:destination="@id/mainActivity2" />
     </fragment>
     <activity
         android:id="@+id/mainActivity2"

@@ -86,7 +86,7 @@ class UserFragment : Fragment() {
         lifecycleScope.launch(Dispatchers.IO) {
             image = imageViewModel.getObjectData(user.uid)
             withContext(Dispatchers.Main) {
-                binding.tvName.text = user.name
+                binding.tvName.text = "Xin chào, ${user.name}!"
                 binding.imgAvatar.setImageBitmap(image.bitmap)
             }
 
@@ -95,8 +95,8 @@ class UserFragment : Fragment() {
 
     private fun openAlertDialog() {
         val builder = AlertDialog.Builder(this.requireContext())
-        builder.setTitle("Waring")
-        builder.setMessage("To logout, your cart and your information will be delete from this mobile")
+        builder.setTitle("Thông báo")
+        builder.setMessage("Khi đăng xuất, tất cả thông tin của bạn sẽ bị xóa khỏi thiết bị!")
             .setPositiveButton("Yes", DialogInterface.OnClickListener { dialogInterface, i ->
                 userViewModel.deleteUser(user.uid)
                 imageViewModel.deleteImage(user.uid)
@@ -109,7 +109,7 @@ class UserFragment : Fragment() {
             .setNegativeButton("No", DialogInterface.OnClickListener { dialogInterface, i ->
                 Toast.makeText(
                     this.requireContext(),
-                    "Không đồng ý thì chết m* mày đi",
+                    ":>",
                     Toast.LENGTH_LONG
                 )
                     .show()

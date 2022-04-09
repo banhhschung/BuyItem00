@@ -2,6 +2,7 @@ package com.example.buyitem00.parser
 
 import org.jsoup.Jsoup
 import org.jsoup.nodes.Document
+import org.jsoup.nodes.Element
 import org.jsoup.select.Elements
 import java.util.ArrayList
 
@@ -20,6 +21,17 @@ object DataMining {
         var text = ""
         for (i in stringArray) {
             text += i + "\n"
+        }
+        return text
+    }
+
+    fun getDataNews(link: String): String {
+        var stringArray = ArrayList<String>()
+        val doc: Document = Jsoup.connect(link).get()
+        val article: Element = doc.getElementsByTag("article")[0]
+        var text = ""
+        for (i in article.children()) {
+            text += i.ownText()
         }
         return text
     }

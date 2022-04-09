@@ -42,10 +42,7 @@ class WelcomeActivity : AppCompatActivity() {
         Toast.makeText(applicationContext, "Take a few minutes to start up", Toast.LENGTH_SHORT)
             .show()
         val animationForButton = AnimationUtils.loadAnimation(this, R.anim.fade_in)
-        val animationForText = AnimationUtils.loadAnimation(this, R.anim.fade_in).apply {
-            duration = 1000
-        }
-        binding.tvText.startAnimation(animationForText)
+
         binding.tbStart.visibility = View.INVISIBLE
         FirebaseDatabase.getInstance().reference.child("Supporter")
             .addValueEventListener(object : ValueEventListener {

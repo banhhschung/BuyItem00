@@ -81,7 +81,7 @@ class CardFragment : Fragment(), OnclickItemListener {
             if (arrProduct.isNotEmpty()) {
                 val id = AutoCreateId().randomId()
                 val order =
-                    Order(id, user.uid, total, "", "", "order", arrProduct)
+                    Order(id, user.uid, total, user.location, "", "Đặt hàng", arrProduct)
                 Firebase.database.getReference("OrderUser").child(id).setValue(order)
                     .addOnSuccessListener {
                         cartViewModel.deleteFromCart(user.uid)
